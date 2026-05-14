@@ -93,6 +93,9 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ### `yarn install` is very slow on poor networks
 **Solution:** Increase the timeout and limit concurrency: `yarn install --network-timeout 600000 --concurrency 1`
 
+### Port opens as 3000 instead of 3624
+**Solution:** Start with `yarn start` or `yarn start-front` (not `npm run`), after `yarn install`, so `PORT` and `REACT_APP_API` from `package.json` apply (they depend on `cross-env`).
+
 ### Port 3624 already in use
 **Solution:** Stop other applications using port 3624 or modify the port in `package.json`
 

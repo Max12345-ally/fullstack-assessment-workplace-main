@@ -3,8 +3,8 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "start": "concurrently \"npm run start-server\" \"npm run start-front\" --kill-others --kill-others-on-fail",
-        "start-front": "set PORT=3624 && set REACT_APP_API=http://localhost:7645 && react-app-rewired start",
+        "start": "concurrently \"yarn run start-server\" \"yarn run start-front\" --kill-others --kill-others-on-fail",
+        "start-front": "cross-env PORT=3624 REACT_APP_API=http://localhost:7645 react-app-rewired start",
         "start-server": "nodemon server/app.js --watch server/*",
         "build": "react-app-rewired build",
         "test": "react-app-rewired test",
@@ -107,6 +107,7 @@
         ]
     },
     "devDependencies": {
+        "cross-env": "^7.0.3",
         "assert": "^2.0.0",
         "buffer": "^6.0.3",
         "crypto-browserify": "^3.12.0",

@@ -7,3 +7,4 @@ export * from './requests/NFT';
 export * from './requests/Leads';
 export * from './requests/Questions';
 export * from './requests/Reports';
+export * from './requests/Transactions';

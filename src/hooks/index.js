@@ -6,4 +6,4 @@ export { default as useLocalStorage } from "./LocalStorage";
 export { default as useLookupAddress } from "./LookupAddress";
 export { default as useOnBlock } from "./OnBlock";
 export { default as usePoller } from "./Poller";
-export { default as useUserProvider } from "./UserProvider";
+export { default as useEthereumWallet } from "./useEthereumWallet";

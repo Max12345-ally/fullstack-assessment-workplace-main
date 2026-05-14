@@ -84,9 +84,12 @@ export const loginAuthUser = async (data) => {
   // TEST MODE: Hardcoded test credentials for local development
   const TEST_EMAIL = 'test@gmail.com';
   const TEST_PASSWORD = 'testpassword';
-  
+
+  const email = typeof data.email === 'string' ? data.email.trim() : data.email;
+  const password = typeof data.password === 'string' ? data.password.trim() : data.password;
+
   // Check if this is the test account
-  if (data.email === TEST_EMAIL && data.password === TEST_PASSWORD) {
+  if (email === TEST_EMAIL && password === TEST_PASSWORD) {
     const mockResponse = {
       user: {
         _id: 'test-user-123',
@@ -115,7 +118,7 @@ export const loginAuthUser = async (data) => {
   return await Api.http({
     method: 'post',
     url: '/login',
-    body: data,
+    body: { ...data, email, password },
   }).then((res) => {
     localStorage.setItem('token', res.token);
     return res;

@@ -15,6 +15,11 @@
     "path": "/dashboard/my-wallet"
   },
   {
+    "pathName": "NFT stats",
+    "count": false,
+    "path": "/dashboard/nft-stats"
+  },
+  {
     "pathName": "KYB",
     "count": "kyb",
     "path": "/admin/kyb",

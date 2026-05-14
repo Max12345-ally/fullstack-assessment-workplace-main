@@ -7,6 +7,9 @@ const blockExplorerLink = (address, blockExplorer) =>
 export default function Address(props) {
     const address = props.value || props.address;
     const ens = useLookupAddress(props.ensProvider, address);
+    if (!address) {
+        return null;
+    }
     let displayAddress = address.substr(0, 6);
     if (ens && ens.indexOf("0x") < 0) {
         displayAddress = ens;
@@ -14,13 +17,18 @@ export default function Address(props) {
         displayAddress += "..." + address.substr(-4);
       } else if (props.size === "long") {
         displayAddress = address;
-    }
+      } else {
+        displayAddress += "..." + address.substr(-4);
+      }
 
     const etherscanLink = blockExplorerLink(address, props.blockExplorer);
 
     return(
-        <span>
-            <strong>Your wallet address: </strong>{ address.toLowerCase() }
+        <span title={address}>
+            <strong>Your wallet address: </strong>
+            <a href={etherscanLink} target="_blank" rel="noopener noreferrer" className="text-inherit">
+                { displayAddress }
+            </a>
         </span>
     )
 
